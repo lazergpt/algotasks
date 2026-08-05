@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class PlainsAndHils {
+public class PlainsAndHilsRecursive {
     static Set<Cell> checkedCells = new HashSet<>();
     static Integer counter = 0;
 
