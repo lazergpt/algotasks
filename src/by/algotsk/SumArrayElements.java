@@ -6,13 +6,15 @@ import java.util.Arrays;
  * Дан массив целых чисел. Разрешается выполнение следующей операции любое количество раз: два соседних элемента меняются между собой знаками.
  * Выведите максимальную сумму элементов массива, которую можно получить.
  * maxPossibleSum([-2, 1, 3]) => 4 // -2 и 1 меняются знаками. [2,-1, 3]
+ *
+ * Решение: сортируем беззнаковый массив и считаем к*-во минусов. Потом самым маеньким назначаем минусы.
+ * Сложность: О(nlogn) - сортировка
  */
 
 class SumArrayElements {
     static void main(String[] args) {
         //System.out.println(maxPossibleSumm(new int[]{-2, 1, 3})); // 4
         System.out.println(maxPossibleSumm(new int[]{-10, 1, 2, -5})); // 12
-
     }
 
     public static int maxPossibleSumm(int[] array) {
