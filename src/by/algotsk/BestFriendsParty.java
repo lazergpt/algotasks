@@ -3,7 +3,7 @@ package by.algotsk;
 import java.util.Arrays;
 import java.util.Comparator;
 
-/*
+/**
 Петя хочет устроить вечеринку. У него есть список друзей, заданный в виде двумерного массива [ [w₁,h₁], [w₂,h₂], …]. Все числа натуральные.
  Где wi — уровень достатка i-го друга, а hi — уровень счастья Пети, если этот друг будет присутствовать на встрече.
   Итоговое счастье Пети будет равняться сумме уровней счастья пришедших друзей.
@@ -19,7 +19,15 @@ public class BestFriendsParty {
         System.out.println(bestFriends(new int[][]{{5, 2}, {3, 2}, {1, 3}}));
     }
 
-
+    /**
+     * right это правый указатель, left левый.
+     * Оба указателя вначале на позиции 0, соответственно текущее счатье равно первому гостю.
+     * условие bestFriends[right][0] >= 2L * bestFriends[leftPointer][0] (друг справа должен быть с в два раза большим достатком, для перемещения левого указателя).
+     * на нулевой итерации внутренний цикл точно игнорится, поэтому в max записываем currentHappiness и переходим к следующему.
+     * На первой итерации добавляем в currentHapines новое счастье и проверяем условие, если условие выполнилось, тогда заходим в цикл, вычитаем из общего счастья текущее и увеличиваем указатель левой границы.
+     * Опять проверяем, что больше, текущее счастье или достигнутое ранее.
+     *
+     */
     public static int bestFriends(int[][] bestFriends) {
 
         Arrays.sort(bestFriends, Comparator.comparingInt(a -> a[0]));
@@ -31,7 +39,7 @@ public class BestFriendsParty {
         for (int right = 0; right < bestFriends.length; right++) {
             currentHappiness += bestFriends[right][1];
 
-            while (bestFriends[right][0] >= 2L * bestFriends[leftPointer][0]) {  // двигаем левый указатель, пока не наше условие не перестанет нарушаться.
+            while (bestFriends[right][0] >= 2L * bestFriends[leftPointer][0]) {  // двигаем левый указатель, пока наше условие не перестанет нарушаться.
                 currentHappiness -= bestFriends[leftPointer][1];
                 leftPointer++;
             }

@@ -59,7 +59,7 @@ public class FindSubArrayWithMaxSum {
         // Она только ухудшит любой будущий ответ.
         for (int i = 1; i < array.length ; i++ )
         {
-            currentSum = Math.max(currentSum + array[i], array[i]);
+            currentSum = Math.max(currentSum + array[i], array[i]);// проверяем что больше, накопленная ранее сумма с новым элементом, или просто новый элемент.
             maxSum = Math.max(maxSum, currentSum);
 
         }
